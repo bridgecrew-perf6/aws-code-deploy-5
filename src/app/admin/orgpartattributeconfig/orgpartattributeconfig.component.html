@@ -1,0 +1,139 @@
+<div class="widgetHolderOption">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="pageHeading">{{labels.title}}</h1>
+            <form [formGroup]="customAttributeForm">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Name</label>
+                        <input type="text" formControlName="optName" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted &amp;&amp; customAttributeForm.controls.optName.errors }" />
+                        <div *ngIf="submitted &amp;&amp; customAttributeForm.controls.optName.errors"
+                            class="text-danger">
+                            <div *ngIf="customAttributeForm.controls.optName.errors.required">Attribute Name is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Status</label>
+                        <select id="inputEnable" class="form-control" formControlName="status"
+                            [ngClass]="{ 'is-invalid': submitted &amp;&amp; customAttributeForm.controls.status.errors }">
+                            <option>Enable</option>
+                            <option>Disable</option>
+                        </select>
+                        <div *ngIf="submitted &amp;&amp; customAttributeForm.controls.status.errors"
+                            class="text-danger">
+                            <div *ngIf="customAttributeForm.controls.status.errors.required">Status is required</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label>Field Type</label>
+                        <input type="text" formControlName="optFieldType" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted &amp;&amp; customAttributeForm.controls.optFieldType.errors }" />
+                        <div *ngIf="submitted &amp;&amp; customAttributeForm.controls.optFieldType.errors"
+                            class="text-danger">
+                            <div *ngIf="customAttributeForm.controls.optFieldType.errors.required">Attribute Name is
+                                required
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label>Integration Label</label>
+                        <input type="text" formControlName="optIntegrationLabel" class="form-control" />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Min Length</label>
+                        <input type="number" formControlName="optMinLength" class="form-control" />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Max Length</label>
+                        <input type="number" formControlName="optMaxLength" class="form-control" />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Tool Tip</label>
+                        <input type="text" formControlName="optToolTip" class="form-control" />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Default Value</label>
+                        <input type="text" formControlName="optDefaultValue" class="form-control" />
+                    </div>
+                    <div class="form-group col-md-6" style="margin-top:auto;">
+                        <div class="form-check form-check-inline col-sm-6" style="margin-right: -0.75rem;">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value=""
+                                formControlName="optMandatory">
+                            <label class="form-check-label" for="inlineCheckbox1">Mandatory</label>
+                        </div>
+                        <div class="form-check form-check-inline col-sm-6" style="margin-right: -0.75rem;">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value=""
+                                formControlName="optDisplayInWeb">
+                            <label class="form-check-label" for="inlineCheckbox2">Display in Web</label>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6" style="margin-top:auto;">
+                        <div class="form-check form-check-inline col-sm-6" style="margin-right: -0.75rem;">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value=""
+                                formControlName="optDisplayInMobile">
+                            <label class="form-check-label" for="inlineCheckbox1">Display in App</label>
+                        </div>
+                        <div class="form-check form-check-inline col-sm-6" style="margin-right: -0.75rem;">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value=""
+                                formControlName="optDisplayInList">
+                            <label class="form-check-label" for="inlineCheckbox2">Display in List</label>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6" style="margin-top:auto;">
+                        <label for="order">Display Order</label>
+                        <select id="inputOrder" class="form-control" formControlName="optDisplayOrder">
+                            <option *ngFor="let item of order">{{item}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Display Type</label>
+                        <select id="inputEnable" class="form-control" formControlName="optAttributeType"
+                            [ngClass]="{ 'is-invalid': submitted &amp;&amp; customAttributeForm.controls.optAttributeType.errors}">
+                            <option *ngFor="let item of displayTypeOptions">{{item}}</option>
+                        </select>
+                        <div *ngIf="submitted &amp;&amp; customAttributeForm.controls.optAttributeType.errors"
+                            class="text-danger">
+                            <div *ngIf="customAttributeForm.controls.optAttributeType.errors.required">Display Type is
+                                required</div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Business Type</label>
+                        <select id="inputEnable" class="form-control" formControlName="optBusinessType">
+                            <option>General</option>
+                            <option>Email</option>
+                            <option>Barcode</option>
+                            <option>Phone Number</option>
+                            <option>Address</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Data Type</label>
+                        <select id="inputEnable" class="form-control" formControlName="optDataType">
+                            <option disabled>Choose</option>
+                            <option>Text</option>
+                            <option>Data Source</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label>Data Source</label>
+                        <input type="text" formControlName="optDatasource" class="form-control" />
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label>Data</label>
+                        <textarea formControlName="optData" class="form-control"></textarea>
+                    </div>
+
+                </div>
+                <!-- *ngIf="hasPermission('update.org')"  -->
+                <div class="">
+                    <button class="btn btn-primary pull-right" (click)="onSubmit()">{{labels.button}}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

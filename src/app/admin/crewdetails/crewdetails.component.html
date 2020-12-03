@@ -1,0 +1,80 @@
+<div class="widgetHolderOption">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="pageHeading">{{heading.title}}</h1>
+            <form [formGroup]="crewdetailsForm" (ngSubmit)="onSubmit()">
+                <div class="form-row">
+
+                    <div class="form-group col-md-12">
+                        <label>Name</label>
+                        <input type="text" formControlName="crewName" class="form-control" />
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label>Business Process</label>
+                        <select id="inputBusinessProcess" class="form-control" formControlName="bpName">
+                            <option disabled>Choose...</option>
+                            <option *ngFor="let businessProcess of bpNames" [ngValue]="businessProcess.id">{{businessProcess.name}}
+                            </option>
+                            
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label>Work Location</label>
+                        <select id="inputWorkLocation" class="form-control" formControlName="workLocation">
+                            <option disabled selected>Choose...</option>
+                            <option *ngFor="let location of workLocations" [ngValue]="location.id">{{location.name}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-md-12">
+                        <button class="btn btn-primary pull-right" type="submit">{{heading.button}}</button>
+                    </div>
+                </div>
+            </form>
+            <br>
+            <div class="">
+                <button class="btn btn-primary" data-toggle="modal"
+                            data-target="#myModal"><i class="fa fa-plus" aria-hidden="true"></i>Add</button>
+                <app-grid [datasource]='crewsDetails' [cols]='crewDetailsColumns'></app-grid>
+            </div>
+        </div> 
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Add crew</h4>
+                <button class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <div>
+                    <div class="form-group col-md-6">
+                        <h4>User</h4>
+                        <select class="form-control" [(ngModel)]="user">
+                            <option disabled selected>Choose...</option>
+                            <option *ngFor="let user of usersData" [ngValue]="user">{{user.name}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <h4>Type</h4>
+                        <select class="form-control" [(ngModel)]="type">
+                            <option disabled selected>Choose...</option>
+                            <option>Lead</option>
+                            <option>Subordinate</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="userSave()" data-dismiss="modal">Save</button>
+            </div>
+        </div>
+    </div>
+</div>

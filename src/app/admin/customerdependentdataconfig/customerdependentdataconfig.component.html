@@ -1,0 +1,104 @@
+<div class="widgetHolderOption">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="pageHeading">{{heading.title}}</h1>
+
+            <form [formGroup]="CustomerDependentForm">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Parent Attribute</label>
+                        <select id="inputParentAtt" class="form-control" formControlName="parentAtt"
+                        [ngClass]="{ 'is-invalid': submitted &amp;&amp; CustomerDependentForm.controls.parentAtt.errors }">
+                            <option disabled selected >Choose...</option>
+                            <option *ngFor="let parentatt of customerCustomConfigData" [value]="parentatt.id"> {{parentatt.occName}}</option>
+                        </select>
+                        <div *ngIf="submitted &amp;&amp; CustomerDependentForm.controls.parentAtt.errors" class="text-danger">
+                            <div *ngIf="CustomerDependentForm.controls.parentAtt.errors.required">Parent Attribute is Required</div>
+                        </div>
+                    </div>
+                   
+                    <div class="form-group col-md-6" >
+                        <label for="inputParentValue">Parent Value</label>
+                        <input type="text"
+                                class="form-control" formControlName="parentValue" id="inputParentValue" placeholder="Enter Values"
+                                [ngClass]="{ 'is-invalid': submitted &amp;&amp; CustomerDependentForm.controls.parentValue.errors }">
+                        <div *ngIf="submitted &amp;&amp;  CustomerDependentForm.controls.parentValue.errors"
+                            class="text-danger">
+                            <div *ngIf="CustomerDependentForm.controls.parentValue.errors.required">Parent Value Is Required</div>
+                            <div *ngIf="CustomerDependentForm.controls.parentValue.errors.maxlength">Parent Value must be less then 200 characters</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label>Child Attribute</label>
+                        <select id="inputChildAtt" class="form-control" formControlName="childAtt"
+                        [ngClass]="{ 'is-invalid': submitted &amp;&amp; CustomerDependentForm.controls.childAtt.errors }">
+                            <option disabled selected>Choose...</option>
+                            <option *ngFor="let childatt of customerCustomConfigData" [value]="childatt.id">{{childatt.occName}}</option>
+                        </select>
+                        <div *ngIf="submitted &amp;&amp; CustomerDependentForm.controls.childAtt.errors" class="text-danger">
+                            <div *ngIf="CustomerDependentForm.controls.childAtt.errors.required">Child Attribute is Required</div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Child Data Type</label>
+                        <select id="inputChildDataType" class="form-control" formControlName="childDataType" (change)="isDisabled()"
+                        [ngClass]="{ 'is-invalid': submitted &amp;&amp; CustomerDependentForm.controls.childDataType.errors }">
+                            <option>TEXT</option>
+                            <option>Data Source</option>
+                        </select>
+                        <div *ngIf="submitted &amp;&amp; CustomerDependentForm.controls.childDataType.errors" class="text-danger">
+                            <div *ngIf="CustomerDependentForm.controls.childDataType.errors.required">Child DataType is Required</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="inputChildValue">Child Value</label>
+                        <textarea rows="1" class="form-control" formControlName="childValue" id="inputChildValue"
+                            placeholder=" Enter Values" [ngClass]="{ 'is-invalid': submitted &amp;&amp; CustomerDependentForm.controls.childValue.errors }"></textarea>
+                        <div *ngIf="submitted &amp;&amp; CustomerDependentForm.controls.childValue.errors"
+                            class="text-danger">
+                            <div *ngIf="CustomerDependentForm.controls.childValue.errors.required">Child Value Is Required</div>
+                            <div *ngIf="CustomerDependentForm.controls.childValue.errors.maxlength">Child Value must be less then 4000 characters</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="inputParentDataSource">Child Data Source</label>
+                        <input type="text" class="form-control" formControlName="childDataSource" id="inputChildDataSource"
+                            placeholder="Enter Data Source" [ngClass]="{ 'is-invalid': submitted &amp;&amp; CustomerDependentForm.controls.childDataSource.errors }">
+                        <div *ngIf="submitted &amp;&amp; CustomerDependentForm.controls.childDataSource.errors"
+                            class="text-danger">
+                            <div *ngIf="CustomerDependentForm.controls.childDataSource.errors.required">Child DataSource Is Required</div>
+                            <div *ngIf="CustomerDependentForm.controls.childDataSource.errors.maxlength">Child DataSource must be less then 150 characters</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label>Parent Type</label>
+                        <select id="inputParentType" class="form-control" formControlName="parentType"
+                        [ngClass]="{ 'is-invalid': submitted &amp;&amp; CustomerDependentForm.controls.parentType.errors }">
+                            <option selected>Main</option>
+                            <option>Sub</option>
+                        </select>
+                        <div *ngIf="submitted &amp;&amp; CustomerDependentForm.controls.parentType.errors" class="text-danger">
+                            <div *ngIf="CustomerDependentForm.controls.parentType.errors.required">Parent Type is Required</div>
+                        </div>
+                    </div>
+                
+                    <div class="form-group col-md-6">
+                        <label>Work Location</label>
+                        <select id="inputWorkLocation" class="form-control" formControlName="workLocationId">
+                            <option disabled selected>Choose...</option>
+                            <option *ngFor="let location of workLocations" [ngValue]="location.id">{{location.name}}</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary pull-right buttons"  (click)="onSubmit()">{{heading.button}}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

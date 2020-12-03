@@ -1,0 +1,25 @@
+<div class="widgetHolderOption">
+    <div class="row">
+        <div class="col-lg-6">
+            <app-datetime heading="Date Time"
+            [currentDate]="currentDate" (dateTimeChange)="selDateTimeChanged($event)"></app-datetime>
+        </div>
+        <div class="col-lg-6">
+            {{dateTimeChange}}
+        </div>
+        <div class="col-lg-6">
+            <app-date heading="Date"
+            [currentDate]="currentDate"  (dateChange)="selDateChanged($event)"></app-date>
+        </div>
+        <div class="col-lg-6">
+            {{dateChange}}
+        </div>
+        
+        <div class="col-lg-6">
+            <app-daterange (dateRangeChange)="selDateRangeChanged($event)"></app-daterange>
+        </div>
+        <div class="col-lg-6">
+            {{dateRangeChange}}
+        </div>
+    </div>
+</div>

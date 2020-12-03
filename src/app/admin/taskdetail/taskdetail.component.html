@@ -1,0 +1,210 @@
+<div class="widgetHolderOption">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="pageHeading">Add Tasks</h1>
+            <div class="page-filter form-row ">
+                <!-- "row d-flex justify-content-end "> -->
+                <div class="form-group col-md-12 align-bottom pull-right">
+                    <button class="btn btn-primary pull-right form-btn-search" (click)="redirectToTaskCustomConfig()"><i class="fa fa-plus"
+                            aria-hidden="true"></i>Config Attributes</button>
+                    <!-- <button class="btn btn-primary pull-right form-btn-search" data-toggle="modal"
+                        data-target="#myModal">Assign Roles</button> -->
+                </div>
+            </div>
+            <form [formGroup]="taskDetailForm">
+
+                <div class="form-row">
+                    <div class="col-md-6"></div>
+                    <div class="form-group col-md-6">
+                        <label for="inputType">Status</label>
+                        <select id="inputType" class="form-control pull-right" formControlName="status">
+                            <option disabled>Choose...</option>
+                            <option>Enable</option>
+                            <option>Disable</option>
+                        </select>
+                        <div *ngIf="submitted &amp;&amp; taskDetailForm.controls.status.errors" class="text-danger">
+                            <div *ngIf="taskDetailForm.controls.status.errors.required">Status is Mandatory
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputCity">Name</label>
+                        <input type="text" class="form-control" id="inputCity" formControlName="name" />
+                        <div *ngIf="submitted &amp;&amp; taskDetailForm.controls.name.errors" class="text-danger">
+                            <div *ngIf="taskDetailForm.controls.name.errors.required">Name is Mandatory
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputState">Display Name</label>
+                        <input type="text" class="form-control" id="inputState" formControlName="displayName">
+                        <div *ngIf="submitted &amp;&amp; taskDetailForm.controls.displayName.errors"
+                            class="text-danger">
+                            <div *ngIf="taskDetailForm.controls.displayName.errors.required">Display Name is Mandatory
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="inputCity">Description</label>
+                        <input type="text" class="form-control" id="inputCity" formControlName="description" />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="color">Color</label>
+                        <select id="color" class="form-control" formControlName="color">
+                            <option disabled>Choose...</option>
+                            <!-- <option *ngFor="let item of countries">{{item}}</option> -->
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputState">Inetgration Label</label>
+                        <input type="text" class="form-control" id="inputState" formControlName="integrationLabel">
+                    </div>
+                    <div class="form-group col-md-6" style="margin-top:auto;">
+                        <div class="form-check form-check-inline col-sm-6" style="margin-right: -0.75rem;">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1"
+                                formControlName="endStatus">
+                            <label class="form-check-label" for="inlineCheckbox1">End Status</label>
+                        </div>
+                        <div class="form-check form-check-inline col-sm-6" style="margin-right: -0.75rem;">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
+                                formControlName="signature">
+                            <label class="form-check-label" for="inlineCheckbox2">Signature</label>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6" style="margin-top:auto;">
+                        <div class="form-check form-check-inline col-sm-6" style="margin-right: -0.75rem;">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1"
+                                formControlName="removeSchedule">
+                            <label class="form-check-label" for="inlineCheckbox1">Remove Schedule</label>
+                        </div>
+                        <div class="form-check form-check-inline col-sm-6" style="margin-right: -0.75rem;">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
+                                formControlName="locationMandatory">
+                            <label class="form-check-label" for="inlineCheckbox2">Location Mandatory</label>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6" style="margin-top:auto;">
+                        <div class="form-check form-check-inline col-sm-6" style="margin-right: -0.75rem;">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1"
+                                formControlName="punchin">
+                            <label class="form-check-label" for="inlineCheckbox1">Punchin</label>
+                        </div>
+                        <div class="form-check form-check-inline col-sm-6" style="margin-right: -0.75rem;">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
+                                formControlName="attachmentMandatory">
+                            <label class="form-check-label" for="inlineCheckbox2">Attachment Mandatory</label>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6" style="margin-top:auto;">
+                        <div class="form-check form-check-inline col-sm-6" style="margin-right: -0.75rem;">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1"
+                                formControlName="cameraAttachment">
+                            <label class="form-check-label" for="inlineCheckbox1">Camera Attachment</label>
+                        </div>
+                        <div class="form-check form-check-inline col-sm-6" style="margin-right: -0.75rem;">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
+                                formControlName="showPart">
+                            <label class="form-check-label" for="inlineCheckbox2">Show Part</label>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputState">Min Attachment</label>
+                        <input type="text" class="form-control" id="inputState" formControlName="minAttachment">
+                    </div>
+                    <div class="form-group col-md-6" style="margin-top:auto;">
+                        <div class="form-check form-check-inline col-sm-6" style="margin-right: -0.75rem;">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1"
+                                formControlName="complaintStatus">
+                            <label class="form-check-label" for="inlineCheckbox1">Complaint Status</label>
+                        </div>
+                        <div class="form-check form-check-inline col-sm-6" style="margin-right: -0.75rem;">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
+                                formControlName="geofence">
+                            <label class="form-check-label" for="inlineCheckbox2">Geofence</label>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputCountry">Geofence Type</label>
+                        <select id="inputCountry" class="form-control" formControlName="geofenceType">
+                            <option disabled>Choose...</option>
+                            <option>Radial</option>
+                            <option>Polygon</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputState">Geofence Radius</label>
+                        <input type="text" class="form-control" id="inputState" formControlName="geofenceRadius">
+                    </div>
+                    <div class="form-group col-md-6" style="margin-top:auto;">
+                        <div class="form-check form-check-inline col-sm-6" style="margin-right: -0.75rem;">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1"
+                                formControlName="otpGenerate">
+                            <label class="form-check-label" for="inlineCheckbox1">OTP Generate</label>
+                        </div>
+                        <div class="form-check form-check-inline col-sm-6" style="margin-right: -0.75rem;">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
+                                formControlName="otpVerify">
+                            <label class="form-check-label" for="inlineCheckbox2">OTP Verify</label>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputCountry">OTP Destination</label>
+                        <select id="inputCountry" class="form-control" formControlName="otpDestination">
+                            <option disabled>Choose...</option>
+                            <option>Customer</option>
+                            <option>Manager</option>
+                            <option>User</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="inputCity">OTP Template</label>
+                        <input type="text" class="form-control" id="inputCity" formControlName="otpTemplate" />
+                    </div>
+                </div>
+            </form>
+            <h1 class="pageSubHeading">Task - Role Mapping</h1>
+            
+                <button type="button" class="btn btn-primary  buttons" style="margin-bottom: 5px;" (click)="openRoleAddModal()"><i
+                    class="fa fa-plus" aria-hidden="true"></i>Add</button>
+            
+            
+            <app-grid [datasource]='tasksRoleGridData' [cols]='taskRoleColumns' (editChange)="editTaskRoleMapping($event)"
+                    [editBtn]="editBtnTaskRoleMapping"></app-grid>
+            <button class="btn btn-primary pull-right buttons" (click)="onSubmit()">Save</button>
+        </div>
+    </div>
+</div>
+
+
+<div id="myModal2" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title">Tasks Role Mapping</h1>
+            </div>
+            <div class="modal-body">
+                <div class="form-group col-md-6">
+                    <h4>Role Name</h4>
+                    <select id="roles" class="form-control" [(ngModel)]="selectedRole">
+                        <option disabled>Choose...</option>
+                        <option *ngFor="let role of roles" [ngValue]="role">{{role.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <h4>Status</h4>
+                    <select id="inputStatus" class="form-control" [(ngModel)]="roleStatus">
+                        <option disabled>Choose...</option>
+                        <option>Enable</option>
+                        <option>Disable</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="addRoleToTask()" >Save</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>

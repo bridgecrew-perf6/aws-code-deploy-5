@@ -1,0 +1,139 @@
+<div class="widgetHolderOption">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="pageHeading">{{labels.title}}</h1>
+            <div class="page-filter form-row">
+                <div class="form-group col-md-12 align-bottom pull-right">
+                    <button type="submit" class="btn btn-primary pull-right form-btn-search" (click)="redirectToTask()">{{intLabels['bp.details.main.button.task']}}</button>
+                    <button type="submit" class="btn btn-primary pull-right form-btn-search" (click)="configPartAttributes()">{{intLabels['bp.details.main.button.config..part.attribute']}}</button>
+                    <button type="submit" class="btn btn-primary pull-right form-btn-search" (click)="configTicketAttributes()">{{intLabels['bp.details.main.button.config.attribute']}}</button>
+            </div>
+        </div>
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>{{intLabels['bp.details.main.column1']}}</label>
+                        <input type="text" formControlName="name" class="form-control" />
+                        <div *ngIf="submitted &amp;&amp; registerForm.controls.name.errors" class="text-danger">
+                            <div *ngIf="registerForm.controls.name.errors.required">Name is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputState">{{intLabels['bp.details.main.column2']}}</label>
+                        <select id="inputState" formControlName="status" class="form-control">
+                            <option selected>Enable</option>
+                            <option>Disable</option>
+                        </select>
+                        <div *ngIf="submitted &amp;&amp; registerForm.controls.status.errors" class="text-danger">
+                            <div *ngIf="registerForm.controls.status.errors.required">Status is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label>{{intLabels['bp.details.main.column3']}}</label>
+                        <input type="text" formControlName="description" class="form-control" />
+                        <div *ngIf="submitted &amp;&amp; registerForm.controls.description.errors" class="text-danger">
+                            <div *ngIf="registerForm.controls.description.errors.required">Description is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <div class="form-check form-check-inline col-md-6">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" formControlName="part">
+                            <label class="form-check-label" for="inlineCheckbox2">{{intLabels['bp.details.main.column4']}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>{{intLabels['bp.details.main.column5']}}</label>
+                        <input type="text" formControlName="partLabel" class="form-control" />
+                        <!-- <div *ngIf="submitted &amp;&amp; registerForm.controls.name.errors" class="text-danger">
+                            <div *ngIf="registerForm.controls.name.errors.required">Name is required</div>
+                        </div> -->
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputState">{{intLabels['bp.details.main.column6']}}</label>
+                        <select id="inputState" formControlName="displayOrder" class="form-control">
+                            <option selected>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <div class="form-check form-check-inline col-md-6">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
+                                formControlName="autoSchedule">
+                                <label class="form-check-label" for="inlineCheckbox2">{{intLabels['bp.details.main.column7']}}</label>
+
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>{{intLabels['bp.details.main.column8']}}</label>
+                        <select id="inputState" formControlName="locationMandatory" class="form-control">
+                            <option selected>false</option>
+                            <option>true</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>{{intLabels['bp.details.main.column9']}}</label>
+                        <input type="text" formControlName="duration" class="form-control" />
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label>{{intLabels['bp.details.main.column10']}}</label>
+                        <input type="text" formControlName="imageUrl" class="form-control" />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <div class="form-check form-check-inline col-md-6">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
+                                formControlName="attachments">
+                                <label class="form-check-label" for="inlineCheckbox2">{{intLabels['bp.details.main.column11']}}</label>
+
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>{{intLabels['bp.details.main.column12']}}</label>
+                        <input type="text" formControlName="maxAttachments" class="form-control" />
+                        <!-- <div *ngIf="submitted &amp;&amp; registerForm.controls.name.errors" class="text-danger">
+                            <div *ngIf="registerForm.controls.name.errors.required">Name is required</div>
+                        </div> -->
+                    </div>
+                    <div class="form-group col-md-6">
+                        <div class="form-check form-check-inline col-md-6">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
+                                formControlName="autoClose">
+                                <label class="form-check-label" for="inlineCheckbox2">{{intLabels['bp.details.main.column13']}}</label>
+
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>{{intLabels['bp.details.main.column14']}}</label>
+                        <input type="text" formControlName="autoCloseDays" class="form-control" />
+                        <!-- <div *ngIf="submitted &amp;&amp; registerForm.controls.name.errors" class="text-danger">
+                            <div *ngIf="registerForm.controls.name.errors.required">Name is required</div>
+                        </div> -->
+                    </div>
+                    <div class="form-group col-md-6">
+                        <div class="form-check form-check-inline col-md-6">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
+                                formControlName="autoArchive">
+                                <label class="form-check-label" for="inlineCheckbox2">{{intLabels['bp.details.main.column15']}}</label>
+
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>{{intLabels['bp.details.main.column16']}}</label>
+                        <input type="text" formControlName="autoArchiveDay" class="form-control" />
+                        <!-- <div *ngIf="submitted &amp;&amp; registerForm.controls.name.errors" class="text-danger">
+                            <div *ngIf="registerForm.controls.name.errors.required">Name is required</div>
+                        </div> -->
+                    </div>
+
+
+
+                    <div class="form-group col-md-12">
+                        <button class="btn btn-primary pull-right">{{labels.button}}</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

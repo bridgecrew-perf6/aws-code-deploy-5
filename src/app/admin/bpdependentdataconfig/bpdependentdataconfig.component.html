@@ -1,0 +1,145 @@
+<div class="widgetHolderOption">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="pageHeading">{{heading.title}}</h1>
+
+            <form [formGroup]="BPDependentForm" (ngSubmit)="onSubmit()">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>BP</label>
+                        <select id="inputBp" class="form-control" formControlName="bp" [(ngModel)]="businessProcess.id" (ngModelChange)="bPChanged(businessProcess.id)"
+                        [ngClass]="{ 'is-invalid': submitted &amp;&amp; BPDependentForm.controls.bp.errors }">
+                            <option disabled [selected]="true" >Choose...</option>
+                            <option *ngFor="let businessProcess of bp" [value]="businessProcess.id">
+                                {{businessProcess.name}}
+                            </option>
+                        </select>
+                        <div *ngIf="submitted &amp;&amp; BPDependentForm.controls.bp.errors" class="text-danger">
+                            <div *ngIf="BPDependentForm.controls.bp.errors.required">BP is Required</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label>Level</label>
+                        <select id="inputLevel" [(ngModel)]="level" (ngModelChange)="levelChanged($event)" class="form-control" formControlName="level"
+                        [ngClass]="{ 'is-invalid': submitted &amp;&amp; BPDependentForm.controls.level.errors }">
+                            <option disabled [selected]="true" >Choose...</option>
+                            <option >TICKET</option>
+                            <option >TASK</option>
+                            <option >PART</option>
+                        </select>
+                        <div *ngIf="submitted &amp;&amp; BPDependentForm.controls.level.errors" class="text-danger">
+                            <div *ngIf="BPDependentForm.controls.level.errors.required">Level is Required</div>
+                        </div>
+                    </div> 
+                    <div class="form-group col-md-6" *ngIf="BPDependentForm.controls.level.value =='TASK'">
+                        <label>Task</label>
+                        <select id="inputLevel" class="form-control" (ngModelChange)="taskChanged($event)" formControlName="task"
+                        [ngClass]="{ 'is-invalid': submitted &amp;&amp; BPDependentForm.controls.task.errors }">
+                            <option disabled [selected]="true" >Choose...</option>
+                            <option *ngFor="let task of taskData" [value]="task.id">{{task.displayName}}</option>
+                        </select>
+                        <div *ngIf="submitted &amp;&amp; BPDependentForm.controls.task.errors" class="text-danger">
+                            <div *ngIf="BPDependentForm.controls.task.errors.required">Task is Required</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label>Parent Attribute</label>
+                        <select id="inputParentAtt" class="form-control" formControlName="parentAtt"
+                        [ngClass]="{ 'is-invalid': submitted &amp;&amp; BPDependentForm.controls.parentAtt.errors }">
+                            <option disabled [selected]="true" >Choose...</option>
+                            <option *ngFor="let parentatt of bpDependentDataConfig" [value]="parentatt.id"> {{ level =='TICKET' ? parentatt.otcName : 
+                                level =='PART' ? parentatt.optName : level =='TASK' ? parentatt.tctName :'' }}</option>
+                        </select>
+                        <div *ngIf="submitted &amp;&amp; BPDependentForm.controls.parentAtt.errors" class="text-danger">
+                            <div *ngIf="BPDependentForm.controls.parentAtt.errors.required">Parent Attribute is Required</div>
+                        </div>
+                    </div>
+                   
+                    <div class="form-group col-md-6" >
+                        <label for="inputParentValue">Parent Value</label>
+                        <input type="text"
+                                class="form-control" formControlName="parentValue" id="inputParentValue" placeholder="Enter Values"
+                                [ngClass]="{ 'is-invalid': submitted &amp;&amp; BPDependentForm.controls.parentValue.errors }">
+                        <div *ngIf="submitted &amp;&amp;  BPDependentForm.controls.parentValue.errors"
+                            class="text-danger">
+                            <div *ngIf="BPDependentForm.controls.parentValue.errors.required">Parent Value Is Required</div>
+                            <div *ngIf="BPDependentForm.controls.parentValue.errors.maxlength">Parent Value must be less then 200 characters</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label>Child Attribute</label>
+                        <select id="inputChildAtt" class="form-control" formControlName="childAtt"
+                        [ngClass]="{ 'is-invalid': submitted &amp;&amp; BPDependentForm.controls.childAtt.errors }">
+                            <option disabled [selected]="true">Choose...</option>
+                            <option *ngFor="let childatt of bpDependentDataConfig" [value]="childatt.id">{{ level =='TICKET' ? childatt.otcName : 
+                                level =='PART' ? childatt.optName : level =='TASK' ? childatt.tctName :'' }}</option>
+                        </select>
+                        <div *ngIf="submitted &amp;&amp; BPDependentForm.controls.childAtt.errors" class="text-danger">
+                            <div *ngIf="BPDependentForm.controls.childAtt.errors.required">Child Attribute is Required</div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Child Data Type</label>
+                        <select id="inputChildDataType" class="form-control" formControlName="childDataType" (change)="isDisabled()"
+                        [ngClass]="{ 'is-invalid': submitted &amp;&amp; BPDependentForm.controls.childDataType.errors }">
+                            <option>TEXT</option>
+                            <option>Data Source</option>
+                        </select>
+                        <div *ngIf="submitted &amp;&amp; BPDependentForm.controls.childDataType.errors" class="text-danger">
+                            <div *ngIf="BPDependentForm.controls.childDataType.errors.required">Child DataType is Required</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="inputChildValue">Child Value</label>
+                        <textarea rows="1" class="form-control" formControlName="childValue" id="inputChildValue"
+                            placeholder=" Enter Values" [ngClass]="{ 'is-invalid': submitted &amp;&amp; BPDependentForm.controls.childValue.errors }"></textarea>
+                        <div *ngIf="submitted &amp;&amp; BPDependentForm.controls.childValue.errors"
+                            class="text-danger">
+                            <div *ngIf="BPDependentForm.controls.childValue.errors.required">Child Value Is Required</div>
+                            <div *ngIf="BPDependentForm.controls.childValue.errors.maxlength">Child Value must be less then 4000 characters</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="inputParentDataSource">Child Data Source</label>
+                        <input type="text" class="form-control" formControlName="childDataSource" id="inputChildDataSource"
+                            placeholder="Enter Data Source" [ngClass]="{ 'is-invalid': submitted &amp;&amp; BPDependentForm.controls.childDataSource.errors }">
+                        <div *ngIf="submitted &amp;&amp; BPDependentForm.controls.childDataSource.errors"
+                            class="text-danger">
+                            <div *ngIf="BPDependentForm.controls.childDataSource.errors.required">Child DataSource Is Required</div>
+                            <div *ngIf="BPDependentForm.controls.childDataSource.errors.maxlength">Child DataSource must be less then 150 characters</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label>Parent Type</label>
+                        <select id="inputParentType" class="form-control" formControlName="parentType"
+                        [ngClass]="{ 'is-invalid': submitted &amp;&amp; BPDependentForm.controls.parentType.errors }">
+                            <option selected>Main</option>
+                            <option>Sub</option>
+                        </select>
+                        <div *ngIf="submitted &amp;&amp; BPDependentForm.controls.parentType.errors" class="text-danger">
+                            <div *ngIf="BPDependentForm.controls.parentType.errors.required">Parent Type is Required</div>
+                        </div>
+                    </div>
+                
+                    <div class="form-group col-md-6">
+                        <label>Work Location</label>
+                        <select id="inputWorkLocation" class="form-control" formControlName="workLocationId">
+                            <option disabled [selected]="true">Choose...</option>
+                            <option *ngFor="let location of workLocations" [ngValue]="location.id">{{location.name}}</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary pull-right buttons"  type="submit">{{heading.button}}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

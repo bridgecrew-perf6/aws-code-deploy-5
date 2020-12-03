@@ -1,0 +1,18 @@
+<div class="widgetHolderOption">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="pageHeading">Crew</h1>
+            <div class="page-filter form-row">
+                <div class="form-group col-md-12 align-bottom">
+                    <button class="btn btn-primary pull-right form-btn-search" (click)="addCrew()"><i class="fa fa-plus"
+                            aria-hidden="true"></i>Add</button>
+                </div>
+            </div>
+            <app-grid [datasource]='crewData' [cols]='crewColumns'
+            (editChange) = "editClicked($event)" (change)="selectionChanged($event)"
+           (deleteChange) = "deleteClicked($event)"  [deleteBtn]="deleteBtn" 
+            [editBtn]="editBtn">
+            </app-grid>
+        </div>
+    </div>
+</div>

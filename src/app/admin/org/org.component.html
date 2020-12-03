@@ -1,0 +1,25 @@
+<div class="widgetHolderOption">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="pageHeading">{{labels['org.list.main.heading']}}</h1>
+
+            <div class="page-filter form-row" *ngIf="isSuperAdmin">
+                <div class="col-sm-6"></div>
+                <div class="form-group col-md-6 align-bottom">
+                    <button class="btn btn-primary pull-right form-btn-search"><i class="fa fa-search"
+                            aria-hidden="true"></i>{{labels['org.list.main.button2']}}</button>
+                    <button class="btn btn-primary pull-right form-btn-search" [routerLink]="['/admin/org-detail/0']"><i
+                            class="fa fa-plus" aria-hidden="true"></i>{{labels['org.list.main.button1']}}</button>
+                    <!-- *ngIf="hasPermission('save.org1')" -->
+                </div>
+            </div>
+
+            <div class="">
+                <app-grid [datasource]='orgGridData' [cols]='orgGridCols' (change)="selectionChanged($event)">
+                </app-grid>
+            </div>
+
+
+        </div>
+    </div>
+</div>

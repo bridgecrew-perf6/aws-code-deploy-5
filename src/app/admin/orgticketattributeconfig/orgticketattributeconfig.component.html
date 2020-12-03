@@ -1,0 +1,139 @@
+<div class="widgetHolderOption">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="pageHeading">{{labels.title}}</h1>
+            <form [formGroup]="customAttributeForm">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Name</label>
+                        <input type="text" formControlName="otcName" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted &amp;&amp; customAttributeForm.controls.otcName.errors }" />
+                        <div *ngIf="submitted &amp;&amp; customAttributeForm.controls.otcName.errors"
+                            class="text-danger">
+                            <div *ngIf="customAttributeForm.controls.otcName.errors.required">Attribute Name is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Status</label>
+                        <select id="inputEnable" class="form-control" formControlName="status"
+                            [ngClass]="{ 'is-invalid': submitted &amp;&amp; customAttributeForm.controls.status.errors }">
+                            <option>Enable</option>
+                            <option>Disable</option>
+                        </select>
+                        <div *ngIf="submitted &amp;&amp; customAttributeForm.controls.status.errors"
+                            class="text-danger">
+                            <div *ngIf="customAttributeForm.controls.status.errors.required">Status is required</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label>Field Type</label>
+                        <input type="text" formControlName="otcFieldType" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted &amp;&amp; customAttributeForm.controls.otcFieldType.errors }" />
+                        <div *ngIf="submitted &amp;&amp; customAttributeForm.controls.otcFieldType.errors"
+                            class="text-danger">
+                            <div *ngIf="customAttributeForm.controls.otcFieldType.errors.required">Attribute Name is
+                                required
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label>Integration Label</label>
+                        <input type="text" formControlName="otcIntegrationLabel" class="form-control" />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Min Length</label>
+                        <input type="number" formControlName="otcMinLength" class="form-control" />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Max Length</label>
+                        <input type="number" formControlName="otcMaxLength" class="form-control" />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Tool Tip</label>
+                        <input type="text" formControlName="otcToolTip" class="form-control" />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Default Value</label>
+                        <input type="text" formControlName="otcDefaultValue" class="form-control" />
+                    </div>
+                    <div class="form-group col-md-6" style="margin-top:auto;">
+                        <div class="form-check form-check-inline col-sm-6" style="margin-right: -0.75rem;">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value=""
+                                formControlName="otcMandatory">
+                            <label class="form-check-label" for="inlineCheckbox1">Mandatory</label>
+                        </div>
+                        <div class="form-check form-check-inline col-sm-6" style="margin-right: -0.75rem;">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value=""
+                                formControlName="otcDisplayInWeb">
+                            <label class="form-check-label" for="inlineCheckbox2">Display in Web</label>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6" style="margin-top:auto;">
+                        <div class="form-check form-check-inline col-sm-6" style="margin-right: -0.75rem;">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value=""
+                                formControlName="otcDisplayInMobile">
+                            <label class="form-check-label" for="inlineCheckbox1">Display in App</label>
+                        </div>
+                        <div class="form-check form-check-inline col-sm-6" style="margin-right: -0.75rem;">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value=""
+                                formControlName="otcDisplayInList">
+                            <label class="form-check-label" for="inlineCheckbox2">Display in List</label>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6" style="margin-top:auto;">
+                        <label for="order">Display Order</label>
+                        <select id="inputOrder" class="form-control" formControlName="otcDisplayOrder">
+                            <option *ngFor="let item of order">{{item}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Display Type</label>
+                        <select id="inputEnable" class="form-control" formControlName="otcAttributeType"
+                            [ngClass]="{ 'is-invalid': submitted &amp;&amp; customAttributeForm.controls.otcAttributeType.errors}">
+                            <option *ngFor="let item of displayTypeOptions">{{item}}</option>
+                        </select>
+                        <div *ngIf="submitted &amp;&amp; customAttributeForm.controls.otcAttributeType.errors"
+                            class="text-danger">
+                            <div *ngIf="customAttributeForm.controls.otcAttributeType.errors.required">Display Type is
+                                required</div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Business Type</label>
+                        <select id="inputEnable" class="form-control" formControlName="otcBusinessType">
+                            <option>General</option>
+                            <option>Email</option>
+                            <option>Barcode</option>
+                            <option>Phone Number</option>
+                            <option>Address</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Data Type</label>
+                        <select id="inputEnable" class="form-control" formControlName="otcDataType">
+                            <option disabled>Choose</option>
+                            <option>Text</option>
+                            <option>Data Source</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label>Data Source</label>
+                        <input type="text" formControlName="otcDatasource" class="form-control" />
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label>Data</label>
+                        <textarea formControlName="otcData" class="form-control"></textarea>
+                    </div>
+
+                </div>
+                <!-- *ngIf="hasPermission('update.org')"  -->
+                <div class="">
+                    <button class="btn btn-primary pull-right" (click)="onSubmit()">{{labels.button}}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

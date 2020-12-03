@@ -1,0 +1,51 @@
+<!--
+<form class="form-inline">
+    <div class="form-group">
+      <div class="input-group">
+        <input class="form-control" placeholder="yyyy-mm-dd"
+               name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+        </div>
+      </div>
+    </div>
+  </form>
+  
+  <pre>Model: {{ model | json }}</pre>
+
+  <hr>
+
+  
+
+
+  <mat-form-field>
+    <input matInput [ngxMatDatetimePicker]="picker" placeholder="Choose a date" 
+    [formControl]="dateControl"
+      [min]="minDate" [max]="maxDate" [disabled]="disabled">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <ngx-mat-datetime-picker #picker [showSpinners]="showSpinners" [showSeconds]="showSeconds"
+      [stepHour]="stepHour" [stepMinute]="stepMinute" [stepSecond]="stepSecond" [touchUi]="touchUi"
+      [color]="color" [enableMeridian]="enableMeridian">
+    </ngx-mat-datetime-picker>
+  </mat-form-field>
+-->
+<!-- (dateInput)="addEvent('input', $event)" -->
+<!-- <mat-form-field appearance="fill">
+    <mat-label>Choose Date</mat-label>
+    <input matInput [matDatepicker]="picker" [formControl]="date"
+           (dateChange)="addEvent('change', $event)">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field> -->
+
+  <div class="input-group">
+    <label style="width: 100%;color: #fcfcfc;">{{heading}}</label><br>
+    <input class="form-control" placeholder="yyyy-mm-dd" name="dp" 
+    (ngModelChange)="addEvent($event)"
+    [(ngModel)]="dateModel" ngbDatepicker #d="ngbDatepicker">
+    
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button">📅</button>
+    </div>
+
+  </div>

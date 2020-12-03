@@ -1,0 +1,8 @@
+.calendar
+{
+    content: "\25AE" !important; /* this is your text. You can also use UTF-8 character codes as I do here */
+    font-family: FontAwesome !important;;
+    left:-5px !important;;
+    position:absolute !important;;
+    top:0 !important;;
+}

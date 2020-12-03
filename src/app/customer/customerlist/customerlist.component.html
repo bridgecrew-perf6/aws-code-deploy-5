@@ -1,0 +1,40 @@
+
+<div class="widgetHolderOption">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="pageHeading">Customer Management</h1>
+        <form [formGroup]="customerlistForm">
+            <div class="page-filter form-row">
+             
+                    <div class=" pull-right form-group col-md-3">
+                        <label>Work Location</label>
+                            <select id="inputWorkLocation" class="form-control" formControlName="workLocationId">
+                                <option disabled [selected]="true">Choose...</option>
+                                <option *ngFor="let location of workLocations" [ngValue]="location.id">{{location.name}}</option>
+                            </select>>
+                    </div>
+                    <div class="pull-right form-group col-md-3">
+                        <label for="inputParentValue">Customer Name</label>
+                        <input type="text" class="form-control" formControlName="customerName" 
+                        id="inputCustomerName" placeholder="Search By CustomerName">
+                    </div>
+                    <div class="pull-right form-group col-md-3">
+                        <label for="inputParentValue">Customer Id</label>
+                        <input type="text" class="form-control" formControlName="customerId" 
+                        id="inputCustomerId" placeholder="Search By CustomerId">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <button class="btn btn-primary pull-right form-btn-search">Bulk Upload</button>
+                        <button class="btn btn-primary pull-right "[routerLink]="['/customer/customer-detail']" >
+                            <i class="fa fa-plus" aria-hidden="true"></i>Add Customer</button>
+                    </div>
+            </div>
+        </form>
+        </div>
+    </div>
+
+    <div class="">
+        <app-grid [datasource]='customers'  [cols]='cols' (change)=
+        "selectionChanged($event)" [editBtn]="editBtn" (editChange) = "editClicked($event)" ></app-grid>
+    </div>
+</div>

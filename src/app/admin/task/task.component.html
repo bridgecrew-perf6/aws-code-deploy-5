@@ -1,0 +1,20 @@
+<div class="widgetHolderOption">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="pageHeading">Tasks</h1>
+            <!-- <div class="col-lg-12">API Response : {{locationData | json}}</div> -->
+            <div class="page-filter form-row ">
+                <!-- "row d-flex justify-content-end "> -->
+                <div class="form-group col-md-12 align-bottom pull-right">
+                    <button class="btn btn-primary pull-right form-btn-search" (click)="redirectToTaskSequence()">Configure Flow</button>
+                    <button class="btn btn-primary pull-right form-btn-search"
+                        (click)="redirectToTask('addTask')"><i class="fa fa-plus"
+                            aria-hidden="true"></i>Add</button>
+                </div>
+            </div>
+            <app-grid [datasource]='tasksGridData' [cols]='taskColumns' 
+                (editChange)="editClicked($event)" (deleteChange)="deleteClicked($event)" [deleteBtn]="deleteBtn"
+                [editBtn]="editBtn"></app-grid>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="widgetHolderOption">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="pageHeading">{{labels['skill.list.main.heading']}}</h1>
+        </div>
+        <div class="form-group col-md-12 ">
+            <button class="btn btn-primary pull-right " *ngIf="hasPermission('save.skill')"
+            [routerLink]="['/admin/skill-detail']" ><i class="fa fa-plus" aria-hidden="true"></i>{{labels['skill.list.main.button1']}}</button>
+            <app-grid [datasource]='skills' [heading]='heading' [cols]='cols' (change)=
+            "selectionChanged($event)" (editChange) = "editClicked($event)" 
+            (deleteChange) = "deleteClicked($event)"  [deleteBtn]="deleteBtn" 
+            [editBtn]="editBtn"></app-grid>
+        </div>
+    </div>
+</div>

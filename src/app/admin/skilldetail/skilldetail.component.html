@@ -1,0 +1,46 @@
+
+<div class="widgetHolderOption" >
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="pageHeading">{{heading.title}}</h1>
+            <form [formGroup]="skillForm" (ngSubmit)="onSubmit()">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>{{intLabels['skill.details.main.form.name']}}</label>
+                        <input type="text" formControlName="name" class="form-control" [(ngModel)]="skillObj.name" [ngClass]="{ 'is-invalid': submitted &amp;&amp; skillForm.controls.name.errors }" />
+                        <div *ngIf="submitted &amp;&amp; skillForm.controls.name.errors" class="text-danger">
+                            <div *ngIf="skillForm.controls.name.errors.required">{{intLabels['skill.details.main.err.name.required']}}</div>
+                            <div *ngIf="skillForm.controls.name.errors.maxlength">{{intLabels['skill.details.main.err.name.maxLength']}}</div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputParentSkill">{{intLabels['skill.details.main.form.parent']}}</label>
+                        <select id="inputParentSkill" [(ngModel)]="skillObj.parentId" formControlName="parentId" class="form-control">
+                             <option hidden selected value="undefined" >{{intLabels['skill.details.main.form.choose']}}...</option>
+                            <option *ngFor='let skill of skillData' [value]="skill.id">
+                                {{skill.name}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label>{{intLabels['skill.details.main.form.description']}}</label>
+                        <textarea type="text" formControlName="description" [(ngModel)]="skillObj.description" class="form-control" [ngClass]="{ 'is-invalid': submitted &amp;&amp; skillForm.controls.description.errors }"></textarea>
+                        <div *ngIf="submitted &amp;&amp; skillForm.controls.description.errors" class="text-danger">
+                            <div *ngIf="skillForm.controls.description.errors.required">{{intLabels['skill.details.main.err.description.required']}}</div>
+                            <div *ngIf="skillForm.controls.description.errors.maxlength">{{intLabels['skill.details.main.err.description.maxLength']}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" *ngIf="hasPermission('save.skill') && !(id>0)">
+                    <button class="btn btn-primary pull-right">{{heading.button}}</button>
+                </div>
+                <div class="form-group" *ngIf="hasPermission('update.skill')&& id >0">
+                    <button class="btn btn-primary pull-right">{{heading.button}}</button>
+                </div>
+            </form>
+          
+        </div>
+    </div>
+</div>

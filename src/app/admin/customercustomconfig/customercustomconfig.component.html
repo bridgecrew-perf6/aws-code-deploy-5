@@ -1,0 +1,11 @@
+<div class="widgetHolderOption">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="pageHeading">Customer Configuration</h1>
+            <div class="">
+                <app-grid [datasource]='customerCustomConfigData' [cols]='customerConfigCols' (change)="selectionChanged($event)" >
+                </app-grid>
+            </div>
+        </div>
+    </div>
+</div>

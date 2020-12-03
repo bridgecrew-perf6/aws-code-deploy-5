@@ -1,0 +1,131 @@
+<div class="widgetHolderOption">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="pageHeading">{{heading.title}}</h1>
+            <form [formGroup]="subLocationDetailForm">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>{{intLabels['sub.location.details.main.form.name']}}</label>
+                        <input type="text" formControlName="name" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted &amp;&amp; subLocationDetailForm.controls.name.errors }" />
+                        <div *ngIf="submitted &amp;&amp; subLocationDetailForm.controls.name.errors"
+                            class="text-danger">
+                            <div *ngIf="subLocationDetailForm.controls.name.errors.required">
+                                {{intLabels['sub.location.details.main.err.name.required']}}</div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputType">{{intLabels['sub.location.details.main.form.type']}}</label>
+                        <select id="inputType" class="form-control" formControlName="type">
+                            <option disabled>Choose...</option>
+                            <option selected>Location</option>
+                        </select>
+                        <div *ngIf="submitted &amp;&amp; subLocationDetailForm.controls.type.errors"
+                            class="text-danger">
+                            <div *ngIf="subLocationDetailForm.controls.type.errors.required">
+                                {{intLabels['sub.location.details.main.err.type.required']}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>{{intLabels['sub.location.details.main.form.description']}}</label>
+                        <input type="text" formControlName="description" class="form-control" />
+                        <div *ngIf="submitted &amp;&amp; subLocationDetailForm.controls.description.errors"
+                            class="text-danger">
+                            <!-- <div *ngIf="subLocationDetailForm.controls.description.errors.required">Description is
+                            required</div> -->
+                            <div *ngIf="subLocationDetailForm.controls.description.errors.maxLength">Description must be
+                                less tha 1000 characters</div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>{{intLabels['sub.location.details.main.form.communicationAddress']}}</label>
+                        <input type="text" formControlName="communicationAddress" class="form-control" />
+                        <div *ngIf="submitted &amp;&amp; subLocationDetailForm.controls.communicationAddress.errors"
+                            class="text-danger">
+                            <!-- <div *ngIf="subLocationDetailForm.controls.communicationAddress.errors.required">Communication Address is
+                            required</div> -->
+                            <div *ngIf="subLocationDetailForm.controls.communicationAddress.errors.maxLength">
+                                Communication Address must be less tha 1000 characters</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>{{intLabels['sub.location.details.main.form.businessAddress']}}</label>
+                        <input type="text" formControlName="businessAddress" class="form-control" />
+                        <div *ngIf="submitted &amp;&amp; subLocationDetailForm.controls.description.errors"
+                            class="text-danger">
+                            <!-- <div *ngIf="subLocationDetailForm.controls.businessAddress.errors.required">Business Address is
+                            required</div> -->
+                            <div *ngIf="subLocationDetailForm.controls.businessAddress.errors.maxLength">Business
+                                Address must be less tha 1000 characters</div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputCity">{{intLabels['sub.location.details.main.form.city']}}</label>
+                        <input type="text" class="form-control" id="inputCity" formControlName="city" />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputState">{{intLabels['sub.location.details.main.form.state']}}</label>
+                        <input type="text" class="form-control" id="inputState" formControlName="state">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputCity">{{intLabels['sub.location.details.main.form.country']}}</label>
+                        <select id="inputCountry" class="form-control" formControlName="country">
+                            <option disabled>Choose...</option>
+                            <option *ngFor="let item of countries">{{item}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputZip">{{intLabels['sub.location.details.main.form.zipCode']}}</label>
+                        <input type="text" class="form-control" id="inputZip" formControlName="zipCode">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputPhone">{{intLabels['sub.location.details.main.form.phone']}}</label>
+                        <input type="text" class="form-control" id="inputPhone" formControlName="phone">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputPhone">{{intLabels['sub.location.details.main.form.alternatePhone']}}</label>
+                        <input type="text" class="form-control" id="inputPhone" formControlName="alternatePhone" />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputEmail">{{intLabels['sub.location.details.main.form.email']}}</label>
+                        <input type="text" class="form-control" id="inputEmail" formControlName="email">
+                    </div>
+                </div>
+                <h1 class="pageSubHeading">{{intLabels['sub.location.details.spoc.heading']}}</h1>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputContactName">{{intLabels['sub.location.details.spoc.contactName']}}</label>
+                        <input type="text" class="form-control" id="inputContactName" formControlName="contactName">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputContactPhone">{{intLabels['sub.location.details.spoc.contactPhone']}}</label>
+                        <input type="text" class="form-control" id="inputContactPhone" formControlName="contactPhone">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputContactEmail">{{intLabels['sub.location.details.spoc.contactEmail']}}</label>
+                        <input type="text" class="form-control" id="inputContactEmail" formControlName="contactEmail">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <!-- <button class="btn btn-primary pull-right">Save</button> -->
+                    <button class="btn btn-primary pull-right" *ngIf="hasPermission('save.sub.location') && !(id>0)"
+                        (click)="onSubmit()">{{heading.button}}</button>
+                    <button class="btn btn-primary pull-right" *ngIf="hasPermission('update.sub.location') && id>0"
+                        (click)="onSubmit()">{{heading.button}}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,272 @@
+<div class="widgetHolderOption">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="pageHeading">{{labels.title}}</h1>
+
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>{{intLabels['user.details.main.column1']}}</label>
+                        <input type="text" formControlName="name" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.name.errors }" />
+                        <div *ngIf="submitted &amp;&amp; registerForm.controls.name.errors" class="text-danger">
+                            <div *ngIf="registerForm.controls.name.errors.required">Name is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputState">{{intLabels['user.details.main.column2']}}</label>
+                        <select id="inputState" formControlName="language" class="form-control">
+                            <option selected>English</option>
+                            <option>Spanish</option>
+                        </select>
+                        <div *ngIf="submitted &amp;&amp; registerForm.controls.language.errors" class="text-danger">
+                            <div *ngIf="registerForm.controls.language.errors.required">Language is required</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label>{{intLabels['user.details.main.column3']}}</label>
+                        <input type="text" formControlName="loginID" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.loginID.errors }" />
+                        <div *ngIf="submitted &amp;&amp; registerForm.controls.loginID.errors" class="text-danger">
+                            <div *ngIf="registerForm.controls.loginID.errors.required">Login ID is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputState">{{intLabels['user.details.main.column4']}}</label>
+                        <input formControlName="email" type="text" class="form-control" />
+                        <div *ngIf="submitted &amp;&amp; registerForm.controls.email.errors" class="text-danger">
+                            <div *ngIf="registerForm.controls.email.errors.required">Email is required</div>
+                            <div *ngIf="registerForm.controls.email.errors.email">Email must be a valid email address
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>{{intLabels['user.details.main.column5']}}</label>
+                        <input type="password" formControlName="password" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.password.errors }" />
+                        <div *ngIf="submitted &amp;&amp; registerForm.controls.password.errors" class="text-danger">
+                            <div *ngIf="registerForm.controls.password.errors.required">Password is required</div>
+                            <div *ngIf="registerForm.controls.password.errors.minLength">Password should be atleast six
+                                characters</div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>{{intLabels['user.details.main.column6']}}</label>
+                        <input type="password" formControlName="confirmPassword" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.confirmPassword.errors }" />
+                        <div *ngIf="submitted &amp;&amp; registerForm.controls.confirmPassword.errors"
+                            class="text-danger">
+                            <div *ngIf="registerForm.controls.confirmPassword.errors.required">Confirm Password is
+                                required</div>
+                            <div *ngIf="registerForm.controls.confirmPassword.errors.minLength">Confirm Password should
+                                be atleast six characters</div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputState">{{intLabels['user.details.main.column7']}}</label>
+                        <input formControlName="phone" type="text" class="form-control" />
+                        <div *ngIf="submitted &amp;&amp; registerForm.controls.phone.errors" class="text-danger">
+                            <div *ngIf="registerForm.controls.phone.errors.required">Phone is required</div>
+                            <div *ngIf="registerForm.controls.phone.errors.pattern">Please, Enter 10 digit Phone Number.
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="form-group col-md-6">
+                        <label>Alternate Phone</label>
+                        <input type="text" formControlName="alternatePhone" class="form-control" />
+                         <div *ngIf="submitted &amp;&amp; registerForm.controls.alternatePhone.errors" class="text-danger">
+                        <div *ngIf="registerForm.controls.alternatePhone.errors.pattern">Please, Enter 10 digit Phone Number.</div>
+                    </div> 
+                    </div> -->
+                    <div class="form-group col-md-6">
+                        <label for="inputState">{{intLabels['user.details.main.column8']}}</label>
+                        <input formControlName="cellNo" type="text" class="form-control" />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>{{intLabels['user.details.main.column9']}}</label>
+                        <input formControlName="IMEINO" type="text" class="form-control" />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>{{intLabels['user.details.main.column10']}}</label>
+                        <select id="inputTimezone" class="form-control" formControlName="timezone">
+                            <option disabled>Choose...</option>
+                            <option value="{{item.timezone}}" *ngFor="let item of timezone">{{item.name}}</option>
+                        </select>
+                        <!-- <div *ngIf="submitted &amp;&amp; registerForm.controls.email.errors" class="text-danger">
+                        <div *ngIf="registerForm.controls.email.errors.required">Email is required</div>
+                        <div *ngIf="registerForm.controls.email.errors.email">Email must be a valid email address</div>
+                    </div> -->
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label>{{intLabels['user.details.main.column11']}}</label>
+                        <input type="text" formControlName="address" class="form-control" id="inputAddress"
+                            placeholder="1234 Main St" />
+                        <div *ngIf="submitted &amp;&amp; registerForm.controls.address.errors" class="text-danger">
+                            <div *ngIf="registerForm.controls.address.errors.required">Address is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>{{intLabels['user.details.main.column12']}}</label>
+                        <input type="text" formControlName="city" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.city.errors }" />
+                        <div *ngIf="submitted &amp;&amp; registerForm.controls.city.errors" class="text-danger">
+                            <div *ngIf="registerForm.controls.city.errors.required">City is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>{{intLabels['user.details.main.column13']}}</label>
+                        <input type="text" formControlName="state" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.state.errors }" />
+                        <div *ngIf="submitted &amp;&amp; registerForm.controls.state.errors" class="text-danger">
+                            <div *ngIf="registerForm.controls.state.errors.required">State is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputState">{{intLabels['user.details.main.column14']}}</label>
+                        <select id="inputCountry" class="form-control" formControlName="country">
+                            <option disabled>Choose...</option>
+                            <option *ngFor="let item of countries">{{item}}</option>
+                        </select>
+                        <div *ngIf="submitted &amp;&amp; registerForm.controls.country.errors" class="text-danger">
+                            <div *ngIf="registerForm.controls.country.errors.required">Country is required</div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group col-md-6">
+                        <label>{{intLabels['user.details.main.column15']}}</label>
+                        <input type="text" formControlName="employeeNo" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.employeeNo.errors }" />
+                        <div *ngIf="submitted &amp;&amp; registerForm.controls.employeeNo.errors" class="text-danger">
+                            <div *ngIf="registerForm.controls.employeeNo.errors.required">Employee NO is required</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label>{{intLabels['user.details.main.column16']}}</label>
+                        <input type="text" formControlName="zipcode" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.zipcode.errors }" />
+                        <div *ngIf="submitted &amp;&amp; registerForm.controls.zipcode.errors" class="text-danger">
+                            <div *ngIf="registerForm.controls.zipcode.errors.required">ZipCode is required</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label>{{intLabels['user.details.main.column17']}}</label>
+                        <input type="text" formControlName="alternatePhone" class="form-control" />
+                        <!-- <div *ngIf="submitted &amp;&amp; registerForm.controls.alternatePhone.errors" class="text-danger">
+                        <div *ngIf="registerForm.controls.alternatePhone.errors.pattern">Please, Enter 10 digit Phone Number.</div>
+                    </div> -->
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>{{intLabels['user.details.main.column18']}}</label>
+                        <input formControlName="profileurl" type="text" class="form-control" />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <app-date (dateChange)="joiningDateChanged($event)" [currentDate]="joiningDate"
+                            heading="{{intLabels['user.details.main.column19']}}"></app-date>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <app-date (dateChange)="confirmDateChanged($event)" [currentDate]="confirmDate"
+                            heading="{{intLabels['user.details.main.column20']}}"></app-date>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <app-date (dateChange)="resignDateChanged($event)" [currentDate]="resgDate"
+                            heading="{{intLabels['user.details.main.column21']}}"></app-date>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputState">{{intLabels['user.details.main.column22']}}</label>
+                        <select id="inputState" formControlName="twoFA" class="form-control">
+                            <option selected>false</option>
+                            <option>true</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <div class="form-check form-check-inline col-md-2">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1"
+                                formControlName="twofasms">
+                            <label class="form-check-label"
+                                for="inlineCheckbox1">{{intLabels['user.details.main.column23']}}</label>
+                        </div>
+                        <div class="form-check form-check-inline col-md-2">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
+                                formControlName="twofaemail">
+                            <label class="form-check-label"
+                                for="inlineCheckbox2">{{intLabels['user.details.main.column24']}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <div class="col-auto text-right">
+                            <button type="button" class="btn btn-primary mb-2" data-toggle="modal"
+                                data-target="#approveModal" #addRoleModal>{{intLabels['user.details.main.button.addrole']}}</button>
+                        </div>
+                    </div>
+                    <div>
+                        <!-- <h1 class="pageHeading">{{componentGridHeading}}</h1> -->
+                        <app-grid [datasource]='addRoleData' [cols]='addRoleColumns' (editChange)="editClicked($event)"
+                            (deleteChange)="deleteClicked($event)" [deleteBtn]="deleteBtn" [editBtn]="editBtn">
+                        </app-grid>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <button class="btn btn-primary pull-right">{{labels.button}}</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade" #modals tabindex="-1" data-dismiss="modal" id='approveModal' role="dialog"
+    aria-labelledby="approveModalLabel" aria-hidden="true" #content>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="padding: .5rem 1rem;">
+                <h2 class="modal-title" id="oasModalLabel">{{intLabels['user.details.main.addrole.model.heading']}}</h2>
+                <button type="button" #closebutton class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="overflow:auto;">
+                <div class="form-group">
+                    <div class=" col-md-6">
+                        <h4 for="inputEmail4">{{intLabels['user.details.main.addrole.model.column1']}}</h4>
+                        <select [(ngModel)]="name" id="inputState" class="form-control">
+                            <option value="{{item.name}}" *ngFor="let item of orgRoleData">{{item.name}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class=" col-md-6">
+                        <h4 for="inputEmail4">{{intLabels['user.details.main.addrole.model.column2']}}</h4>
+                        <!-- <input type="text" id="managerId" (keyup)="getManagerList($event)" autocomplete="off"
+                            [(ngModel)]="manager" class="form-control frm m-2">
+                        <ul class="list-group">
+                            <li *ngFor="let item of managersData" class="list-group-item"><a
+                                    class="card-link hardcursor">{{item.name}}</a></li>
+                        </ul> -->
+
+                        <!-- <app-autocomplete [list]="managetList"></app-autocomplete> -->
+                        <p-autoComplete [(ngModel)]="manager" [suggestions]="finalManagerList" (completeMethod)="search($event)"
+                                placeholder="Search" [dropdown]="true" [minLength]="3" 
+                                placeholder="Hint: Type first 3 letters"></p-autoComplete>
+                    </div>
+                    <div class=" col-md-6">
+                        <h4 for="inputEmail4">{{intLabels['user.details.main.addrole.model.column3']}}</h4>
+                        <select [(ngModel)]="defaultRole" id="inputState" class="form-control">
+                            <option selected value="false">False</option>
+                            <option value="true">True</option>
+                        </select>
+                    </div>
+                    <div class="col-auto text-right">
+                        <button data-dismiss="modal" (click)="onUserRoleSubmit()" class="btn btn-primary mb-2"
+                            *ngIf="!isEditClicked">Save</button>
+                        <button data-dismiss="modal" (click)="onUserEditRoleSubmit()" class="btn btn-primary mb-2"
+                            *ngIf="isEditClicked">Save</button>
+                        <!-- <button type="submit" data-dismiss="modal" class="btn btn-danger mb-2">Reject</button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

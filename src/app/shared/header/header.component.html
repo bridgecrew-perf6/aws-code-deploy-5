@@ -1,0 +1,42 @@
+<!-- ========== HEADER ========== -->
+<header class="header container-fluid">
+    <!-- Logo -->
+    <div class="logoContainer">
+    <a href="https://www.fieldez.com/wp-content/uploads/2020/02/FieldEZ-Logo.png" aria-label="Front">
+        <img alt="fieldez.com" style="height: 40px;" src="https://www.fieldez.com/wp-content/uploads/2020/02/FieldEZ-Logo.png"/>
+        
+    </a>
+    </div>
+  
+    <!-- End Logo -->
+    <div  class="loggedInUserFirstL"><i class="fa fa-cog" aria-hidden="true"></i></div>
+  
+    <section class="userOptionMenu">
+      <div class="spacingBlue"></div>
+  
+      <div class="u-header_loggedInfo">
+          <div class="text" >{{displayName}}</div>
+          <div class="textemail" >{{displayEmail}}</div>
+      </div>
+  
+      <div class="menuItem" (click)="loadSettingsPage()">
+          <div class="item">Settings</div>
+          <div class="desc">Manage Account & Preference</div>
+      </div>
+      <div class="menuItem" style="border-top:#f9f6f6 1px solid;" (click)="logout()">
+          <div class="divLine"></div>
+          <div class="item">Sign Out</div>
+      </div>
+    </section>
+  
+    <section class="headerMenu" *ngIf="sessionObj">
+          <!--<ul>
+              <li (click)="goToDashboard()" >IntelliCredit</li>
+          </ul>-->
+    </section>
+  
+    </header>
+  
+    
+    <!-- ========== END HEADER ========== -->
+    

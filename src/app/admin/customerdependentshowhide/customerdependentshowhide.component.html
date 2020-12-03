@@ -1,0 +1,61 @@
+<div class="widgetHolderOption">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="pageHeading">{{labels.title}}</h1>
+        </div>
+    </div>
+    <form [formGroup]="customerDependentForm">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label>{{labels.parentAttribute}}</label>
+                <select id="inputParentAtt" class="form-control" formControlName="ddcParentAttrb"
+                    [ngClass]="{ 'is-invalid': submitted &amp;&amp; customerDependentForm.controls.ddcParentAttrb.errors }">
+                    <option selected disabled>Choose...</option>
+                    <option *ngFor="let parentatt of customerAttributes">{{parentatt.occName}}</option>
+                </select>
+                <div *ngIf="submitted &amp;&amp; customerDependentForm.controls.ddcParentAttrb.errors"
+                    class="text-danger">
+                    <div *ngIf="customerDependentForm.controls.ddcParentAttrb.errors.required">Parent Attribute is
+                        Required</div>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="parentValue">{{labels.parentValue}}</label>
+                <input type="text" formControlName="ddcParentValue" class="form-control" id="inputState"
+                    [ngClass]="{ 'is-invalid': submitted &amp;&amp; customerDependentForm.controls.ddcParentValue.errors }">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="childAttributes">{{labels.childAttribute}}</label>
+                <select id="childAttributes" formControlName="ddcChildAttrb" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted &amp;&amp; customerDependentForm.controls.ddcChildAttrb.errors }">
+                    <option disabled>Choose...</option>
+                    <option *ngFor="let item of customerAttributes">{{item.occName}}</option>
+                </select>
+                <div *ngIf="submitted &amp;&amp; customerDependentForm.controls.ddcChildAttrb.errors"
+                    class="text-danger">
+                    <div *ngIf="customerDependentForm.controls.ddcChildAttrb.errors.required">Child Attribute is
+                        Required</div>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="display">{{labels.display}}</label>
+                <select id="display" formControlName="ddcDisplay" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted &amp;&amp; customerDependentForm.controls.ddcDisplay.errors }">
+                    <option disabled>Choose...</option>
+                    <option>Show</option>
+                    <option>Hide</option>
+                </select>
+                <div *ngIf="submitted &amp;&amp; customerDependentForm.controls.ddcDisplay.errors" class="text-danger">
+                    <div *ngIf="customerDependentForm.controls.ddcDisplay.errors.required">Display type is Required
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </form>
+
+    <div class="form-group">
+        <button class="btn btn-primary pull-right buttons" (click)="onSubmit()">{{labels.button1}}</button>
+    </div>
+
+</div>

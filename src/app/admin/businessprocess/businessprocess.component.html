@@ -1,0 +1,18 @@
+<div class="widgetHolderOption">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="pageHeading">{{labels['bp.list.main.heading']}}</h1>
+
+                <div class="form-group col-md-12">
+                    <button type="submit" class="btn btn-primary pull-right form-btn-search"
+                      [routerLink]="['/admin/business-process-detail/0']">
+                   <i class="fa fa-plus" aria-hidden="true"></i>{{labels['bp.list.main.button1']}}</button>
+                </div>
+            </div>
+        </div>
+
+    <div class="">
+        <app-grid [datasource]='businessProcessData' [cols]='businessProcessColumns' (change)="selectionChanged($event)"></app-grid>
+    </div>
+    
+</div>

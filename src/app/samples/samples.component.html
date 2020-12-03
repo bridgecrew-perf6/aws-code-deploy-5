@@ -1,0 +1,73 @@
+<app-header></app-header>
+<div class="dashboardContainer">
+    <aside class="sectionLMenu" [ngClass]="{'collapsed': leftPanelCollapsed}">
+        <!-- Brand Logo -->
+        <div class="sectionL_Brand">
+
+            <div class="logoWhite">
+
+            </div>
+            <div class="logoWhiteTxt">
+                Samples
+            </div>
+
+            <div class="collapseDiv" (click)="collapseLeftPanel(true)">
+                <i class="material-icons">
+                    arrow_back_ios
+                </i>
+                <i class="material-icons icon2">
+                    arrow_back_ios
+                </i>
+            </div>
+
+            <div class="expandDiv" (click)="collapseLeftPanel(false)">
+                <i class="material-icons">
+                    keyboard_arrow_right
+                </i>
+                <i class="material-icons icon2">
+                    keyboard_arrow_right
+                </i>
+            </div>
+
+        </div>
+        <!-- Brand Logo Ends-->
+
+        <section class="LeftMenuItems">
+            <div [routerLink]="['grid']" class="item">
+                <div class="icon"><i class="material-icons">person_outline</i></div>
+                <div class="text">Grid</div>
+            </div>
+            <div [routerLink]="['datepricker']" class="item">
+                <div class="icon"><i class="material-icons">settings</i></div>
+                <div class="text">Date Time Picker</div>
+            </div>
+            <div [routerLink]="['form']" class="item">
+                <div class="icon"><i class="material-icons">settings</i></div>
+                <div class="text">Form</div>
+            </div>
+            <div [routerLink]="['display']" class="item">
+                <div class="icon"><i class="material-icons">settings</i></div>
+                <div class="text">Display</div>
+            </div>
+        </section>
+
+    </aside>
+    <div *ngIf="isLoading" class="spinner">
+        <div class="d-flex justify-content-center">
+            <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+    </div>
+    <section class="mainContainer" [ngClass]="{'lm_fixed': !leftPanelCollapsed}">
+        
+
+        <!--style="height: 85vh;overflow: auto;"-->
+        <div class="contentMain">
+            <router-outlet></router-outlet>
+        </div>
+
+    </section>
+
+</div>
+<app-footer></app-footer>

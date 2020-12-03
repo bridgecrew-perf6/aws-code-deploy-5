@@ -1,0 +1,53 @@
+
+<div class="widgetHolderOption" >
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="pageHeading">{{heading.title}}</h1>
+            <form [formGroup]="roleForm" (ngSubmit)="onSubmit()">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>{{intLabels['role.details.main.form.name']}}</label>
+                        <input type="text" formControlName="name" class="form-control" [(ngModel)]="roleObj.name" [ngClass]="{ 'is-invalid': submitted &amp;&amp; roleForm.controls.name.errors }" />
+                        <div *ngIf="submitted &amp;&amp; roleForm.controls.name.errors" class="text-danger">
+                            <div *ngIf="roleForm.controls.name.errors.required">{{intLabels['role.details.main.err.name.required']}}</div>
+                            <div *ngIf="roleForm.controls.name.errors.maxlength">{{intLabels['role.details.main.err.name.maxLength']}}</div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputParentSkill">{{intLabels['role.details.main.form.parent']}}</label>
+                        <select id="inputParentSkill" [(ngModel)]="roleObj.roleId" formControlName="roleId" class="form-control" (click)="getPermissions(roleObj.roleId)">
+                            <option hidden selected value='undefined'>{{intLabels['role.details.main.form.choose']}}...</option> 
+                            <option *ngFor="let role of roleData" [value]="role.id">
+                                {{role.roleName}}
+                            </option>
+                        </select> 
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label>{{intLabels['role.details.main.form.description']}}</label>
+                        <textarea type="text" formControlName="description" [(ngModel)]="roleObj.description" class="form-control" [ngClass]="{ 'is-invalid': submitted &amp;&amp; roleForm.controls.description.errors }"></textarea>
+                        <div *ngIf="submitted &amp;&amp; roleForm.controls.description.errors" class="text-danger">
+                            <div *ngIf="roleForm.controls.description.errors.required">{{intLabels['role.details.main.err.description.required']}}</div>
+                            <div *ngIf="roleForm.controls.description.errors.maxlength">{{intLabels['role.details.main.err.description.maxLength']}}</div>
+                        </div>
+                    </div>
+                </div>
+               <h1 class="pageSubHeading">{{permissionGridHeading}}</h1>
+                 <app-grid [datasource]='permissions' [cols]='permissionGridColumns'
+                    [dataKey]= "permissionGridDataKey"
+                    [selectedObjects]='selectedPermissions'
+                    [rowSelection]="permissionGridRowSelection"
+                    (selectedRows) = "selectComponent($event)">
+                 </app-grid> <br>
+                <div class="form-group" *ngIf="hasPermission('save.role') && !(id>0)">
+                    <button class="btn btn-primary pull-right">{{heading.button}}</button>
+                </div>
+                <div class="form-group" *ngIf="hasPermission('update.role') && id >0">
+                    <button class="btn btn-primary pull-right">{{heading.button}}</button>
+                </div>
+            </form>
+          
+        </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="widgetHolderOption">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="pageHeading">BP Dependent Data</h1>
+            <form [formGroup]="bpDepentForm" >
+                <div class="page-filter form-row">
+                        <div class=" pull-right form-group col-md-3">
+                            <select [(ngModel)]="type" formControlName="type" (ngModelChange)="typeChanged($event)" id="inputType" class="form-control" >
+                                <option hidden [selected]="true">Choose...</option>
+                                <option >TICKET</option>
+                                <option >TASK</option>
+                                <option >PART</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-9">
+                            <button class="btn btn-primary pull-right form-btn-search" [routerLink]="['/admin/bp-dependent-data']" >
+                                <i class="fa fa-plus" aria-hidden="true"></i>BP Dependent Data
+                            </button>
+                        </div>
+                        <app-grid [datasource]='dependentData' [cols]='cols' (change)="selectionChanged($event)" 
+                            (editChange) = "editClicked($event)" [editBtn]="editBtn">
+                        </app-grid>
+                </div>
+            </form>        
+        </div>
+    </div>
+</div>

@@ -1,0 +1,231 @@
+<div class="widgetHolderOption">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="pageHeading">{{labels.title}}</h1>
+
+            <form [formGroup]="registerForm">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>{{intLabels['org.details.main.form.name']}}</label>
+                        <input type="text" formControlName="orgName" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.orgName.errors }" />
+                        <div *ngIf="submitted &amp;&amp; registerForm.controls.orgName.errors" class="text-danger">
+                            <div *ngIf="registerForm.controls.orgName.errors.required">{{intLabels['org.details.main.err.name.required']}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>{{intLabels['org.details.main.form.language']}}</label>
+                        <select id="inputLanguage" class="form-control" formControlName="orgLangPref"
+                            [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.orgLangPref.errors }">
+                            <option disabled>Choose...</option>
+                            <option>English</option>
+                            <option>French</option>
+                            <option>German</option>
+                            <option>Spanish</option>
+                        </select>
+                        <div *ngIf="submitted &amp;&amp; registerForm.controls.orgLangPref.errors" class="text-danger">
+                            <div *ngIf="registerForm.controls.orgLangPref.errors.required">{{intLabels['org.details.main.err.language.required']}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress">{{intLabels['org.details.main.form.businessAddress']}}</label>
+                    <input type="text" class="form-control" formControlName="orgBusinessAddress" id="inputAddress"
+                        placeholder="Main St">
+                    <div *ngIf="submitted &amp;&amp; registerForm.controls.orgBusinessAddress.errors"
+                        class="text-danger">
+                        <div *ngIf="registerForm.controls.orgBusinessAddress.errors.required">{{intLabels['org.details.main.err.businessAddress.required']}}</div>
+                        <div *ngIf="registerForm.controls.orgBusinessAddress.errors.maxLength">{{intLabels['org.details.main.err.businessAddress.maxLength']}}</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress2">{{intLabels['org.details.main.form.commonAddress']}}</label>
+                    <input type="text" class="form-control" formControlName="orgCommAddress" id="inputAddress2"
+                        placeholder="Apartment, studio, or floor">
+                    <div *ngIf="submitted &amp;&amp; registerForm.controls.orgCommAddress.errors" class="text-danger">
+                        <div *ngIf="registerForm.controls.orgCommAddress.errors.maxLength">{{intLabels['org.details.main.err.commonAddress.maxLength']}}</div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputCountry">{{intLabels['org.details.main.form.country']}}</label>
+                        <select id="inputCountry" class="form-control" formControlName="orgCountry">
+                            <option disabled>Choose...</option>
+                            <option *ngFor="let item of countries">{{item}}</option>
+                        </select>
+                        <div *ngIf="submitted &amp;&amp; registerForm.controls.orgCountry.errors" class="text-danger">
+                            <div *ngIf="registerForm.controls.orgCountry.errors.required">{{intLabels['org.details.main.err.country.required']}}</div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputState">{{intLabels['org.details.main.form.state']}}</label>
+                        <input type="text" class="form-control" id="inputState" formControlName="orgState">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputCity">{{intLabels['org.details.main.form.city']}}</label>
+                        <input type="text" class="form-control" id="inputCity" formControlName="orgCity">
+                        <div *ngIf="submitted &amp;&amp; registerForm.controls.orgCity.errors" class="text-danger">
+                            <div *ngIf="registerForm.controls.orgCity.errors.required">{{intLabels['org.details.main.err.city.required']}}</div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputZip">{{intLabels['org.details.main.form.zipCode']}}</label>
+                        <input type="text" class="form-control" id="inputZip" formControlName="orgZipcode">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputPhone">{{intLabels['org.details.main.form.phone']}}</label>
+                        <input type="text" class="form-control" id="inputPhone" formControlName="orgPhone">
+                        <div *ngIf="submitted &amp;&amp; registerForm.controls.orgPhone.errors" class="text-danger">
+                            <div *ngIf="registerForm.controls.orgPhone.errors.required">{{intLabels['org.details.main.err.phone.required']}}</div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputAltPhone">{{intLabels['org.details.main.form.alternatePhone']}}</label>
+                        <input type="text" class="form-control" id="inputAltPhone" formControlName="orgAltPhone">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>{{intLabels['org.details.main.form.email']}}</label>
+                        <input type="text" formControlName="orgEmail" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.orgEmail.errors }" />
+                        <div *ngIf="submitted &amp;&amp; registerForm.controls.orgEmail.errors" class="text-danger">
+                            <div *ngIf="registerForm.controls.orgEmail.errors.required">{{intLabels['org.details.main.err.email.required']}}</div>
+                            <div *ngIf="registerForm.controls.orgEmail.errors.email">{{intLabels['org.details.main.err.email.error']}}</div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputZip">{{intLabels['org.details.main.form.timezone']}}</label>
+                        <select id="inputTimezone" class="form-control" formControlName="orgTimeZone">
+                            <option disabled>Choose...</option>
+                            <option value="{{item.timezone}}" *ngFor="let item of timezone">{{item.name}}</option>
+                        </select>
+                        <div *ngIf="submitted &amp;&amp; registerForm.controls.orgTimeZone.errors" class="text-danger">
+                            <div *ngIf="registerForm.controls.orgTimeZone.errors.required">{{intLabels['org.details.main.err.timezone.required']}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputBuildVerion">{{intLabels['org.details.main.form.buildVersion']}}</label>
+                        <input type="text" class="form-control" id="inputBuildVerion" formControlName="orgBuildVersion">
+                        <div *ngIf="submitted &amp;&amp; registerForm.controls.orgBuildVersion.errors"
+                            class="text-danger">
+                            <div *ngIf="registerForm.controls.orgBuildVersion.errors.required">Build Version is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputMode">{{intLabels['org.details.main.form.mode']}}</label>
+                        <select id="inputMode" class="form-control" formControlName="orgMode">
+                            <option disabled>Choose...</option>
+                            <option>paid</option>
+                            <option>trial</option>
+                        </select>
+                        <div *ngIf="submitted &amp;&amp; registerForm.controls.orgMode.errors" class="text-danger">
+                            <div *ngIf="registerForm.controls.orgMode.errors.required">{{intLabels['org.details.main.err.mode.required']}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="input2Fa">{{intLabels['org.details.main.form.2FA']}}</label>
+                        <select id="input2Fa" class="form-control" formControlName="org2fa">
+                            <option disabled>Choose...</option>
+                            <option>true</option>
+                            <option>false</option>
+                        </select>
+                        <div *ngIf="submitted &amp;&amp; registerForm.controls.org2fa.errors" class="text-danger">
+                            <div *ngIf="registerForm.controls.org2fa.errors.required">{{intLabels['org.details.main.err.2FA.required']}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6" style="text-align:center;margin-top:auto">
+                        <div class="form-check form-check-inline col-sm-3">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value=""
+                                formControlName="org2fasms">
+                            <label class="form-check-label" for="inlineCheckbox1">{{intLabels['org.details.main.form.2FA.sms']}}</label>
+                        </div>
+                        <div class="form-check form-check-inline col-sm-3">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value=""
+                                formControlName="org2faemail">
+                            <label class="form-check-label" for="inlineCheckbox2">{{intLabels['org.details.main.form.2FA.email']}}</label>
+                        </div>
+                    </div>
+
+                </div>
+
+                <h1 class="pageSubHeading">{{intLabels['org.details.spoc.heading']}}</h1>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputContactName">{{intLabels['org.details.spoc.contactName']}}</label>
+                        <input type="text" class="form-control" id="inputContactName" formControlName="orgContactName">
+                        <div *ngIf="submitted &amp;&amp; registerForm.controls.orgContactName.errors"
+                            class="text-danger">
+                            <div *ngIf="registerForm.controls.orgContactName.errors.required">{{intLabels['org.details.spoc.err.contactName.required']}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputContactPhone">{{intLabels['org.details.spoc.contactPhone']}}</label>
+                        <input type="text" class="form-control" id="inputContactPhone"
+                            formControlName="orgContactPhone">
+                        <div *ngIf="submitted &amp;&amp; registerForm.controls.orgContactPhone.errors"
+                            class="text-danger">
+                            <div *ngIf="registerForm.controls.orgContactPhone.errors.required">{{intLabels['org.details.spoc.err.contactPhone.required']}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputContactEmail">{{intLabels['org.details.spoc.contactEmail']}}</label>
+                        <input type="text" class="form-control" id="inputContactEmail"
+                            formControlName="orgContactEmail">
+                        <div *ngIf="submitted &amp;&amp; registerForm.controls.orgContactEmail.errors"
+                            class="text-danger">
+                            <div *ngIf="registerForm.controls.orgContactEmail.errors.required">{{intLabels['org.details.spoc.err.contactEmail.required']}}
+                            </div>
+                            <div *ngIf="registerForm.controls.orgContactEmail.errors.email">{{intLabels['org.details.spoc.err.contactEmail.error']}}
+                                address</div>
+                        </div>
+                    </div>
+                </div>
+                <h1 class="pageSubHeading">{{intLabels['org.details.components.heading']}}</h1>
+                <app-grid [datasource]='masterComponents' [cols]='componentGridColumns' [dataKey]="componentGridDataKey"
+                    [selectedObjects]='selectedComponents' [rowSelection]="componentGridRowSelection"
+                    (selectedRows)="selectComponent($event)"></app-grid>
+
+                <div id="myModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="pull-right">
+                                <button type="button" class="close" data-dismiss="modal"
+                                    style="padding-right: 5px;">&times;</button>
+                            </div>
+                            <div class="modal-body" style="text-align: center;">
+                                <p>Please make sure you want to {{labels.activeButton}} the org.</p>
+                                <button type="button" class="btn btn-success" data-dismiss="modal" (click)="activateDeactivateOrg()">Yes</button>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-primary pull-right buttons" *ngIf="hasPermission('update.org')" (click)="onSubmit()">{{labels.button}}</button>
+                    <button class="btn btn-primary pull-right buttons" data-toggle="modal"
+                        data-target="#myModal" *ngIf="hasPermission('update.org')">{{labels.activeButton}}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

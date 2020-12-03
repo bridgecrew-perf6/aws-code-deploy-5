@@ -1,0 +1,19 @@
+<div class="widgetHolderOption">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="pageHeading">Customer Dependent Data</h1>
+           <div class="page-filter form-row">
+                
+                <div class="form-group col-md-12">
+                    <button class="btn btn-primary pull-right form-btn-search" [routerLink]="['/admin/customer-dependent-data']" >
+                        <i class="fa fa-plus" aria-hidden="true"></i>Customer Dependent Data
+                    </button>
+                </div>
+                <app-grid [datasource]='dependentData' [cols]='cols' (change)="selectionChanged($event)" 
+                    (editChange) = "editClicked($event)" [editBtn]="editBtn">
+                </app-grid>
+            </div>
+            
+        </div>
+    </div>
+</div>
