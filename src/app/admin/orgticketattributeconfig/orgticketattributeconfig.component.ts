@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { OrgTicketCustomConfig } from 'src/app/model/OrgTicketCustomConfig';
+import { OrgTicketCustomConfig } from 'src/app/model/orgTicketCustomConfig';
 import { TicketcustomconfigService } from 'src/app/services/ticketcustomconfig.service';
 import { OrgticketcustomconfigComponent } from '../orgticketcustomconfig/orgticketcustomconfig.component';
 
