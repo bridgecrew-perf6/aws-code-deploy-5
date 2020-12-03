@@ -12,8 +12,14 @@ phases:
     commands:
         - echo Build started 
         - ng build --prod
+  post_build:
+    commands:
+      - aws s3 sync ./dist/frontend s3://angular-deploy-ui/build-angular/ --acl 'public-read' --delete
 artifacts:
-    files:
-        - '**/*'
-    base-directory: 'dist*'
-    discard-paths: yes
+  files:
+    - '**/*.html'
+    - '**/*.js'
+    - '**/*.css'
+    - '**/*.ico'
+  discard-paths: yes
+  base-directory: 'dist/frontend'
