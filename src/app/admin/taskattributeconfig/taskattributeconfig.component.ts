@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TaskCustomConfig } from 'src/app/model/taskCustomConfig';
 import { TaskcustomconfigService } from 'src/app/services/taskcustomconfig.service';
 
 @Component({
