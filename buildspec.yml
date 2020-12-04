@@ -17,6 +17,6 @@ phases:
         - aws s3 sync ./dist/frontend s3://angular-deploy-ui --delete
 artifacts:
     files:
-        - dist/frontend/*
+        - dist/*
         - appspec.yml
     discard-paths: yes
