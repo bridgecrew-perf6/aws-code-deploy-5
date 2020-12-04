@@ -12,11 +12,11 @@ phases:
     commands:
         - echo Build started 
         - ng build --prod
-  post_build:
-    commands:
-        - aws s3 sync ./dist/frontend s3://angular-deploy-ui --delete
+  # post_build:
+  #   commands:
+  #       - aws s3 sync ./dist/frontend s3://angular-deploy-ui --delete
 artifacts:
     files:
         - dist/*
         - appspec.yml
-    discard-paths: yes
+    discard-paths: no
