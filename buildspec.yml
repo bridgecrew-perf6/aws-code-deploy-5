@@ -15,3 +15,8 @@ phases:
   post_build:
     commands:
         - aws s3 sync ./dist/frontend s3://angular-deploy-ui --delete
+artifacts:
+    files:
+        - '**/*'
+    base-directory: 'dist*'
+    discard-paths: no
