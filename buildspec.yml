@@ -19,4 +19,5 @@ artifacts:
     files:
        - dist/frontend/*
        - appspec.yml
+       - cleanup.sh
     discard-paths: yes
